@@ -65,6 +65,7 @@ config-$(call config_package,cfg80211) += CFG80211
 
 config-$(call config_package,mac80211) += MAC80211
 config-$(CONFIG_PACKAGE_MAC80211_MESH) += MAC80211_MESH
+config-$(CONFIG_PACKAGE_ATH_SPECTRAL) += ATH11K_SPECTRAL
 
 include ath.mk
 
@@ -120,6 +121,13 @@ define KernelPackage/mac80211/config
 	config PACKAGE_MAC80211_MESH
 		bool "Enable 802.11s mesh support"
 		default y
+
+	config PACKAGE_ATH_SPECTRAL
+		bool "Atheros spectral scan support"
+		depends on PACKAGE_ATH_DEBUG
+		select KERNEL_RELAY
+		help
+		  Say Y to enable access to the FFT/spectral data via debugfs.
 
   endif
 endef
