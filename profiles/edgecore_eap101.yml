@@ -11,7 +11,7 @@ feeds:
     path: ../../feeds/bluetooth-cc2652
 include:
   - wifi-ax
-  - ucentral-ap
+  - no-ucentral
 packages:
   - cc2652
 diffconfig: |
